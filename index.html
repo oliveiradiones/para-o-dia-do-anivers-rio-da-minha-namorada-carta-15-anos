@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para o Meu Amor 💖</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Fira Code', 'Courier New', Courier, monospace;
+        }
+
+        body {
+            background-color: #0d1117;
+            color: #c9d1d9;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .terminal-container {
+            width: 100%;
+            max-width: 700px;
+            background-color: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+            overflow: hidden;
+        }
+
+        .terminal-header {
+            background-color: #21262d;
+            padding: 12px 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid #30363d;
+        }
+
+        .window-buttons {
+            display: flex;
+            gap: 8px;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .red { background-color: #ff5f56; }
+        .yellow { background-color: #ffbd2e; }
+        .green { background-color: #27c93f; }
+
+        .file-name {
+            font-size: 0.85rem;
+            color: #8b949e;
+        }
+
+        .terminal-body {
+            padding: 24px;
+            line-height: 1.6;
+        }
+
+        .code-comment { color: #8b949e; font-style: italic; }
+        .code-keyword { color: #ff7b72; }
+        .code-func { color: #d2a8ff; }
+        .code-string { color: #a5d6ff; }
+
+        .start-btn {
+            margin-top: 20px;
+            background-color: #238636;
+            color: #ffffff;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s ease;
+        }
+
+        .start-btn:hover {
+            background-color: #2ea043;
+            transform: translateY(-2px);
+        }
+
+        /* Área de Carregamento Hacker */
+        #loader-area {
+            display: none;
+            margin-top: 25px;
+            text-align: center;
+        }
+
+        .flower-icon {
+            font-size: 3rem;
+            animation: pulse 1.2s infinite alternate;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.2); }
+        }
+
+        .loader-text {
+            color: #a5d6ff;
+            font-size: 1.05rem;
+            margin-top: 10px;
+            margin-bottom: 12px;
+        }
+
+        .progress-bar-bg {
+            width: 100%;
+            height: 12px;
+            background-color: #21262d;
+            border-radius: 6px;
+            overflow: hidden;
+            border: 1px solid #30363d;
+        }
+
+        .progress-bar-fill {
+            width: 0%;
+            height: 100%;
+            background-color: #2ea043;
+            transition: width 0.15s linear;
+        }
+
+        #letter-output {
+            margin-top: 20px;
+            white-space: pre-wrap;
+            color: #7ee787;
+            font-size: 1rem;
+            min-height: 120px;
+            border-left: 3px solid #238636;
+            padding-left: 16px;
+            display: none;
+        }
+
+        .final-badge {
+            display: none;
+            margin-top: 20px;
+            text-align: center;
+            padding: 15px;
+            background: rgba(255, 123, 114, 0.1);
+            border: 1px dashed #ff7b72;
+            border-radius: 8px;
+            color: #ff7b72;
+            font-size: 1.2rem;
+            animation: fadeIn 1s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="terminal-container">
+        <div class="terminal-header">
+            <div class="window-buttons">
+                <div class="dot red"></div>
+                <div class="dot yellow"></div>
+                <div class="dot green"></div>
+            </div>
+            <div class="file-name">carta_15_anos.js</div>
+        </div>
+
+        <div class="terminal-body">
+            <p class="code-comment">// Compilando mensagem especial para o meu amor 🩷🌷</p>
+            <p><span class="code-keyword">const</span> destino = <span class="code-string">"Meu Amor 💖"</span>;</p>
+            <p><span class="code-keyword">const</span> idade = <span class="code-string">15</span>;</p>
+            <p><span class="code-keyword">const</span> primeiroAmorReal = <span class="code-string">true</span>;</p>
+            
+            <p><span class="code-keyword">function</span> <span class="code-func">abrirCarta</span>() {</p>
+            <p style="padding-left: 20px;" class="code-comment">// Clique abaixo para ler a carta</p>
+            <p>}</p>
+
+            <button class="start-btn" id="runBtn" onclick="iniciarProcesso()">
+                ▶ Ler Carta Secreta
+            </button>
+
+            <!-- Animação do Carregamento -->
+            <div id="loader-area">
+                <div class="flower-icon">🌷</div>
+                <div class="loader-text">Ops... Hackeando seu coração 👾</div>
+                <div class="progress-bar-bg">
+                    <div class="progress-bar-fill" id="progressFill"></div>
+                </div>
+            </div>
+
+            <div id="letter-output"></div>
+
+            <div class="final-badge" id="finalBadge">
+                ❤️ Coração hackeado com sucesso! kakaka 💗👾 ❤️
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const textoCarta = `Parabéns pelos seus 15 anos, Julia! 🎉❤️
+
+Hoje é o seu dia, mas a verdade é q quem ganha o presente diário sou eu por ter vc na minha vida. Eu queria te dizer do fundo do meu coração: vc é a primeira namorada da minha vida por quem eu realmente senti amor de verdade, sentimentos sinceros e uma confiança gigante q eu nunca tinha sentido por ngm antes. Sinceramente, nunca imaginei q ia me apaixonar assim ou q ia ser tão feliz do lado de alguém.
+
+Mas tinha q ser vc, né? Com esse seu sorriso lindo, esse seu jeito encantador, seus olhos e esse cabelo que me deixa doido por vc. Se tem uma coisa q aprendi ao seu lado, é q amar é encontrar paz nos detalhes simples do dia a dia — na sua risada q muda o meu astral na hora e na forma cmg a gente se entende só pelo olhar.
+
+Vc n faz ideia do impacto positivo q causa em td ao seu redor. Seu jeito, sua energia e a pessoa incrível q vc é me dão orgulho td santo dia. Fazer essa surpresa em formato de código foi só uma forma diferente q encontrei de tentar transformar em linha de comando um sentimento gigante q n cabe em nenhuma linguagem de programação.
+
+Quero q vc saiba q em hipótese alguma vou te deixar, n vou te abandonar e nunca vou soltar a sua mão. Posso n ser o cara mais perfeito do mundo, mas vou fazer de td pra te fazer a menina mais feliz desse planeta.
+
+Que esse seu novo ciclo de 15 anos venha leve, cheio de saúde, conquistas e momentos felizes. Que vc alcance cada um dos seus sonhos — e q eu possa estar sempre por perto pra comemorar cada vitória do seu lado.
+
+Vc é meu porto seguro, minha parceira pra td e a melhor parte da minha rotina. Obrigado por fazer parte dos meus 17 anos, por me apoiar e por deixar td mais leve desde q vc chegou.
+
+Aproveita mto o seu dia, amor 🩷🫶🏾. Vc merece o mundo inteiro e mto mais. Te amo demais! ✨`;
+
+        function iniciarProcesso() {
+            const btn = document.getElementById("runBtn");
+            const loader = document.getElementById("loader-area");
+            const fill = document.getElementById("progressFill");
+
+            btn.style.display = "none";
+            loader.style.display = "block";
+
+            let percent = 0;
+            const progressInterval = setInterval(() => {
+                percent += 1;
+                fill.style.width = percent + "%";
+
+                if (percent >= 100) {
+                    clearInterval(progressInterval);
+                    setTimeout(() => {
+                        loader.style.display = "none";
+                        revelarCarta();
+                    }, 500);
+                }
+            }, 55);
+        }
+
+        let i = 0;
+        function revelarCarta() {
+            const output = document.getElementById("letter-output");
+            const badge = document.getElementById("finalBadge");
+
+            output.style.display = "block";
+
+            function digitar() {
+                if (i < textoCarta.length) {
+                    output.textContent += textoCarta.charAt(i);
+                    i++;
+                    setTimeout(digitar, 65);
+                } else {
+                    badge.style.display = "block";
+                }
+            }
+            digitar();
+        }
+    </script>
+</body>
+  </html>
+  
